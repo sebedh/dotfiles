@@ -28,8 +28,18 @@ configs=(
     yamlfmt/yamlfmt.yaml
 )
 
+scripts=(
+    tmux-session-fzf.sh
+    tmux-sessionizer.sh
+)
+
 for c in "${configs[@]}"; do
     [[ -d ~/.config/$c && -L ~/.config/$c ]] && rm -r ~/.config/"$c"
     mkdir -p ~/.config/${c%/*}
     symlink "$PWD/$c" ~/.config/"$c"
+done
+
+for s in "${scripts[@]}"; do
+    mkdir -p ~/.local/bin
+    symlink "$PWD/scripts/$s" ~/.local/bin/"$s"
 done
