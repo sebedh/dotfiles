@@ -31,5 +31,5 @@ configs=(
 for c in "${configs[@]}"; do
     [[ -d ~/.config/$c && -L ~/.config/$c ]] && rm -r ~/.config/"$c"
     mkdir -p ${c%/*}
-    symlink "$PWD/$c" ~/.config/"$f"
+    symlink "$PWD/$c" ~/.config/"$c"
 done
