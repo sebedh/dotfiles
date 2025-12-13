@@ -17,6 +17,10 @@ input * {
 }
 
 # #---Starting External Scripts---# #
+# Export environment variables for UWSM (needed since we skip session.sh)
+exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
 exec uwsm-app -- waybar
 exec uwsm-app -- mako
 exec uwsm-app -- nm-applet
