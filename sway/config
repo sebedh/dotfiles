@@ -8,7 +8,7 @@ set $hibernate sudo -A systemctl suspend
 
 input * {
     xkb_layout "us,se"
-    xkb_option "grp:win_space_toggle,caps:escape"
+    xkb_options "grp:win_space_toggle,caps:escape"
     repeat_delay 300
     repeat_rate 50
 }
