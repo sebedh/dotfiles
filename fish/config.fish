@@ -21,10 +21,9 @@ abbr -a incus sudo incus
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source ~/.cargo/env.fish
 
-# opencode
-fish_add_path /home/sebbe/.opencode/bin
-# pnpmp
-fish_add_path /home/sebbe/.local/share/pnpm
+fish_add_path ~/.local/bin
+fish_add_path ~/.opencode/bin
+fish_add_path ~/.local/share/pnpm
+fish_add_path ~/go/bin
 fish_add_path /opt/zen-browser-bin/
 fish_add_path /usr/local/go/bin
-fish_add_path ~/go/bin
