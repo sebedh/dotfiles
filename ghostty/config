@@ -1,0 +1,16 @@
+font-size   = 9
+font-family = "Bitstream Vera Sans Mono"
+theme = Catppuccin Mocha
+background-opacity = 0.90
+
+# full screen for terminal
+window-height = 80
+window-width = 300
+
+shell-integration = fish
+shell-integration-features = ssh-terminfo
+shell-integration-features = sudo
+
+quit-after-last-window-closed = false
+
+cursor-opacity = 0.5
