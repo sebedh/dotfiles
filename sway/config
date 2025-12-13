@@ -21,10 +21,9 @@ input * {
 exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
+exec /usr/lib/polkit-kde-authentication-agent-1
 exec uwsm-app -- waybar
 exec uwsm-app -- mako
-exec uwsm-app -- nm-applet
-exec uwsm-app -- blueman-applet
 
 mode "exit: [l]ogout" {
     bindsym l exec swaymsg exit
