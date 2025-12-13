@@ -34,6 +34,7 @@ configs=(
     jj/config.toml
     mako/core.ini
     tmux/tmux.conf
+    xdg-terminals.list
     yamlfmt/yamlfmt.yaml
 )
 
