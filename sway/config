@@ -18,10 +18,10 @@ input * {
 exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
-exec uwsm-app -- waybar
-exec uwsm-app -- mako
-exec uwsm-app -- nm-applet
-exec uwsm-app -- blueman-applet
+exec sleep 1 && uwsm-app -- waybar
+exec sleep 1 && uwsm-app -- mako
+exec sleep 1 && uwsm-app -- nm-applet
+exec sleep 1 && uwsm-app -- blueman-applet
 
 mode "exit: [l]ogout" {
     bindsym l exec swaymsg exit
