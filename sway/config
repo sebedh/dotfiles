@@ -14,9 +14,12 @@ input * {
 }
 
 # #---Starting External Scripts---# #
+# Export Sway socket to systemd environment for UWSM
+exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
 exec uwsm-app -- waybar
 exec uwsm-app -- mako
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec uwsm-app -- nm-applet
 exec uwsm-app -- blueman-applet
 
@@ -26,14 +29,14 @@ mode "exit: [l]ogout" {
     bindsym Return mode "default"
 }
 
-#mode "resize" {
-#    bindsym j exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize down
-#    bindsym k exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize up
-#    bindsym h exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize left
-#    bindsym l exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize right
-#    bindsym Escape mode "default"
-#    bindsym Return mode "default"
-#}
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 mode "screen select [1]laptop [2]work-ds [3]home-ds [0]auto" {
     bindsym 1 exec --no-startup-id autorandr laptop
