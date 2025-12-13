@@ -1,0 +1,11 @@
+[user]
+name = "Sebastian Edholm"
+email = "sebbe@sbb.io"
+
+[signing]
+backend = "gpg"
+behavior = "own"
+
+[aliases]
+b = ["branch"]
+n = ["new"]
