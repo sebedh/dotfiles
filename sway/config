@@ -1,4 +1,7 @@
 # #---Basic definitions---# #
+# Note: Fedora's systemd integration conflicts with UWSM
+# Only include cgroups script, not the session.sh
+include /etc/sway/config.d/10-systemd-cgroups.conf
 
 set $term ghostty
 set $mod Mod4
@@ -14,14 +17,10 @@ input * {
 }
 
 # #---Starting External Scripts---# #
-# Export Sway socket to systemd environment for UWSM
-exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-
-exec sleep 1 && uwsm-app -- waybar
-exec sleep 1 && uwsm-app -- mako
-exec sleep 1 && uwsm-app -- nm-applet
-exec sleep 1 && uwsm-app -- blueman-applet
+exec uwsm-app -- waybar
+exec uwsm-app -- mako
+exec uwsm-app -- nm-applet
+exec uwsm-app -- blueman-applet
 
 mode "exit: [l]ogout" {
     bindsym l exec swaymsg exit
