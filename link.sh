@@ -20,10 +20,19 @@ symlink() {
 symlink "$PWD/git/.gitconfig" ~/.gitconfig
 
 configs=(
-    fish/config.fish
     fish/conf.d/dracula.fish
     fish/conf.d/ssh-agent.fish
+    fish/config.fish
+    fontconfig/fonts.conf
     ghostty/config
+    hypr/autostart.conf
+    hypr/bindings.conf
+    hypr/hyprland.conf
+    hypr/input.conf
+    hypr/looknfeel.conf
+    hypr/monitors.conf
+    jj/config.toml
+    mako/core.ini
     tmux/tmux.conf
     yamlfmt/yamlfmt.yaml
 )
@@ -31,6 +40,9 @@ configs=(
 scripts=(
     tmux-session-fzf.sh
     tmux-sessionizer.sh
+    launch-browser.sh
+    launch-walker.sh
+    cmd-terminal-cwd.sh
 )
 
 for c in "${configs[@]}"; do

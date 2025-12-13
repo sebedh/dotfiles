@@ -1,4 +1,5 @@
 set --universal --erase fish_greeting
+set fish_greeting
 
 set -gx EDITOR nvim
 set -gx BROWSER zen-browser
