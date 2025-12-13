@@ -27,3 +27,4 @@ fish_add_path /home/sebbe/.opencode/bin
 # pnpmp
 fish_add_path /home/sebbe/.local/share/pnpm
 fish_add_path /opt/zen-browser-bin/
+fish_add_path /usr/local/go/bin
