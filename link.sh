@@ -18,6 +18,7 @@ symlink() {
 }
 
 symlink "$PWD/git/.gitconfig" ~/.gitconfig
+symlink "$PWD/xdg-terminals.list" ~/.config/xdg-terminals.list
 
 configs=(
     fish/conf.d/dracula.fish
@@ -34,7 +35,6 @@ configs=(
     jj/config.toml
     mako/core.ini
     tmux/tmux.conf
-    xdg-terminals.list
     yamlfmt/yamlfmt.yaml
 )
 
