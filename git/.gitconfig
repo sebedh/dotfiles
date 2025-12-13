@@ -1,0 +1,14 @@
+[user]
+	signingKey = B6EF1EF130FBFD24B927CB1DA3E201A737F1337C
+	email = sebbe@sebb.io
+	name = Sebastian Edholm
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[core]
+    editor = nvim
+[rerere]
+	enabled = true
+[column]
+	ui = auto
