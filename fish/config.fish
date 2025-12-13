@@ -1,6 +1,4 @@
 set --universal --erase fish_greeting
-function fish_greeting; end
-funcsave fish_greeting
 
 set -gx EDITOR nvim
 set -gx BROWSER zen-browser
@@ -21,6 +19,7 @@ abbr -a k kubectl
 abbr -a incus sudo incus
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+source ~/.cargo/env.fish
 
 # opencode
 fish_add_path /home/sebbe/.opencode/bin
