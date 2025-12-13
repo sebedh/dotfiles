@@ -34,6 +34,7 @@ configs=(
     hypr/monitors.conf
     jj/config.toml
     mako/core.ini
+    sway/config
     tmux/tmux.conf
     waybar/config.jsonc
     waybar/style.css

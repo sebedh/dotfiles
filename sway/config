@@ -1,0 +1,189 @@
+# #---Basic definitions---# #
+
+set $term ghostty
+set $mod Mod4
+set $shutdown sudo -A shutdown -h now
+set $reboot sudo -A reboot
+set $hibernate sudo -A systemctl suspend
+
+input * {
+    xkb_layout "us,se"
+    xkb_option "grp:win_space_toggle,caps:escape"
+    repeat_delay 300
+    repeat_rate 50
+}
+
+# #---Starting External Scripts---# #
+exec uwsm-app -- waybar
+exec uwsm-app -- mako
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec uwsm-app -- nm-applet
+exec uwsm-app -- blueman-applet
+
+mode "exit: [l]ogout" {
+    bindsym l exec swaymsg exit
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+#mode "resize" {
+#    bindsym j exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize down
+#    bindsym k exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize up
+#    bindsym h exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize left
+#    bindsym l exec --no-startup-id /home/sebbe/.local/bin/scripts/i3resize right
+#    bindsym Escape mode "default"
+#    bindsym Return mode "default"
+#}
+
+mode "screen select [1]laptop [2]work-ds [3]home-ds [0]auto" {
+    bindsym 1 exec --no-startup-id autorandr laptop
+    bindsym 2 exec --no-startup-id autorandr work-ds
+    bindsym 3 exec --no-startup-id autorandr home-ds
+    bindsym 0 exec --no-startup-id autorandr --change
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+Shift+Escape mode "exit: [l]ogout"
+
+# #---Applications---# #
+bindsym $mod+Return            exec --no-startup-id env GTK_IM_MODULE=simple $term
+bindsym $mod+Shift+Return      exec --no-startup-id zen-browser
+bindsym $mod+r                 exec rofi -show drun -location 2 -width 100 -lines 2 -line-margin 0 -line-padding 1 -hide-scrollbar -kb-element-next "Tab" -kb-row-tab ""
+bindsym $mod+Shift+p           exec /usr/local/bin/rofi-pass
+
+bindsym --release $mod+z exec --no-startup-id swaylock
+
+# bindsym $mod+Shift+space floating toggle
+# bindsym $mod+space       focus mode_toggle
+
+# #---Letter key bindings---# #
+bindsym $mod+a       mode "resize"
+bindsym $mod+x       [con_id="__focused__" instance="^(?!math|dropdown).*$"] kill
+bindsym $mod+Shift+x [con_id="__focused__" instance="^(?!math|dropdown).*$"] kill
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+t split toggle
+
+bindsym $mod+f fullscreen toggle
+
+# Move and focus
+bindsym $mod+h       focus left
+bindsym $mod+Shift+h move left 30
+bindsym $mod+j       focus down
+bindsym $mod+Shift+j move down 30
+bindsym $mod+k       focus up
+bindsym $mod+Shift+k move up 30
+bindsym $mod+l       focus right
+bindsym $mod+Shift+l move right 30
+
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
+
+# bindsym $mod+z       gaps outer current plus 5
+# bindsym $mod+Shift+z gaps outer current minus 5
+
+bindsym $mod+b       bar mode toggle
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3|~a"
+set $ws4 "4|~b"
+set $ws5 "5"
+set $ws6 "6" 
+set $ws7 "7|Social"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+assign [class="Firefox"] $ws1
+assign [class="Chromium"] $ws1
+assign [class="Microsoft Teams"] $ws7
+assign [class="Signal"] $ws7
+assign [class="Slack"] $ws7
+assign [class="org.remmina.Remmina"] $ws5
+assign [class="KeePassXC"] $ws9
+assign [class="PulseUI"] $ws10
+for_window [class="PulseUI"] floating enable
+
+set $work_mon_r DVI-I-1-1
+set $work_mon_l DVI-I-2-2
+
+workspace $ws1 output $work_mon_l
+workspace $ws2 output $work_mon_l
+workspace $ws3 output $work_mon_r
+workspace $ws4 output $work_mon_r
+workspace $ws5 output $work_mon_r
+workspace $ws6 output $work_mon_r
+workspace $ws7 output $work_mon_r
+workspace $ws8 output $work_mon_r
+workspace $ws9 output $laptop_mon
+workspace $ws0 output $work_mon_r
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# #---Function Buttons---# #
+bindsym $mod+F2    restart
+bindsym $mod+F7    mode "screen select [1]laptop [2]work-ds [3]home-ds [0]auto"
+bindsym Print      exec flameshot gui
+
+# #---Extra XF86 Keys---# #
+# These are the extra media keys that some keyboards have.
+
+# Audio
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioMute        exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioMute		             exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioLowerVolume	       exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks
+#bindsym XF86AudioRaiseVolume	       exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks
+# End Audio
+
+bindsym XF86PowerOff		        exec --no-startup-id prompt "Are you sure you want to shutdown?" "$shutdown"
+bindsym XF86MonBrightnessUp		exec "light -A 5; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown		exec "light -U 5; notify-send 'brightness down'"
+bindsym shift+XF86MonBrightnessUp	exec "light -A 2; notify-send 'brightness up'" 	
+bindsym shift+XF86MonBrightnessDown	exec "light -U 2; notify-send 'brightness down'"
+
+#### STYLE
+default_border pixel 3
+
+gaps inner 0
+
+## COLORS
+# Default is:
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+
+# class                 border  backgr  text    indicator child_border
+client.focused          #42e3f5 #9e83c0 #ffffff #e77899   #72138c
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
