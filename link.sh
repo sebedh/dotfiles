@@ -22,7 +22,6 @@ symlink "$PWD/xdg-terminals.list" ~/.config/xdg-terminals.list
 
 configs=(
     fish/conf.d/dracula.fish
-    fish/conf.d/ssh-agent.fish
     fish/config.fish
     fontconfig/fonts.conf
     ghostty/config

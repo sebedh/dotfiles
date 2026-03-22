@@ -3,13 +3,6 @@ font-family = "Bitstream Vera Sans Mono"
 theme = Catppuccin Mocha
 background-opacity = 0.90
 
-# full screen for terminal
-window-height = 80
-window-width = 300
-window-padding-x = 0
-window-padding-y = 0
-window-padding-color = "extend-always"
-
 shell-integration = fish
 shell-integration-features = ssh-terminfo
 shell-integration-features = sudo

@@ -1,13 +1,15 @@
 # #---Basic definitions---# #
-# Note: Fedora's systemd integration conflicts with UWSM
-# Only include cgroups script, not the session.sh
-include /etc/sway/config.d/10-systemd-cgroups.conf
 
 set $term ghostty
 set $mod Mod4
 set $shutdown sudo -A shutdown -h now
 set $reboot sudo -A reboot
 set $hibernate sudo -A systemctl suspend
+
+set $left h
+set $down j
+set $up k
+set $right l
 
 input * {
     xkb_layout "us,se"
@@ -20,10 +22,9 @@ input * {
 # Export environment variables for UWSM (needed since we skip session.sh)
 exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec_always --no-startup-id kanshi
 
-exec /usr/lib/polkit-kde-authentication-agent-1
-exec uwsm-app -- waybar
-exec uwsm-app -- mako
+exec mako
 
 mode "exit: [l]ogout" {
     bindsym l exec swaymsg exit
@@ -32,19 +33,11 @@ mode "exit: [l]ogout" {
 }
 
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+    bindsym $left resize shrink width 10 px
+    bindsym $down resize grow height 10 px
+    bindsym $up resize shrink height 10 px
+    bindsym $right resize grow width 10 px
 
-mode "screen select [1]laptop [2]work-ds [3]home-ds [0]auto" {
-    bindsym 1 exec --no-startup-id autorandr laptop
-    bindsym 2 exec --no-startup-id autorandr work-ds
-    bindsym 3 exec --no-startup-id autorandr home-ds
-    bindsym 0 exec --no-startup-id autorandr --change
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -53,9 +46,8 @@ bindsym $mod+Shift+Escape mode "exit: [l]ogout"
 
 # #---Applications---# #
 bindsym $mod+Return            exec --no-startup-id env GTK_IM_MODULE=simple $term
-bindsym $mod+Shift+Return      exec --no-startup-id zen-browser
+bindsym $mod+Shift+Return      exec --no-startup-id flatpak run app.zen_browser.zen
 bindsym $mod+r                 exec rofi -show drun -location 2 -width 100 -lines 2 -line-margin 0 -line-padding 1 -hide-scrollbar -kb-element-next "Tab" -kb-row-tab ""
-bindsym $mod+Shift+p           exec /usr/local/bin/rofi-pass
 
 bindsym --release $mod+z exec --no-startup-id swaylock
 
@@ -104,15 +96,13 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-assign [class="Firefox"] $ws1
+assign [class="Zen Browser"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="Microsoft Teams"] $ws7
 assign [class="Signal"] $ws7
 assign [class="Slack"] $ws7
+assign [class="Outlook"] $ws8
 assign [class="org.remmina.Remmina"] $ws5
-assign [class="KeePassXC"] $ws9
-assign [class="PulseUI"] $ws10
-for_window [class="PulseUI"] floating enable
 
 set $work_mon_r DVI-I-1-1
 set $work_mon_l DVI-I-2-2
@@ -153,27 +143,14 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # #---Function Buttons---# #
-bindsym $mod+F2    restart
-bindsym $mod+F7    mode "screen select [1]laptop [2]work-ds [3]home-ds [0]auto"
-bindsym Print      exec flameshot gui
+bindsym $mod+F2    swaymsg reload
 
 # #---Extra XF86 Keys---# #
 # These are the extra media keys that some keyboards have.
 
-# Audio
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioMute        exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioMute		             exec --no-startup-id amixer sset Master toggle && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioLowerVolume	       exec --no-startup-id amixer sset Master 5%- && pkill -RTMIN+10 i3blocks
-#bindsym XF86AudioRaiseVolume	       exec --no-startup-id amixer sset Master 5%+ && pkill -RTMIN+10 i3blocks
 # End Audio
 
 bindsym XF86PowerOff		        exec --no-startup-id prompt "Are you sure you want to shutdown?" "$shutdown"
-bindsym XF86MonBrightnessUp		exec "light -A 5; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown		exec "light -U 5; notify-send 'brightness down'"
-bindsym shift+XF86MonBrightnessUp	exec "light -A 2; notify-send 'brightness up'" 	
-bindsym shift+XF86MonBrightnessDown	exec "light -U 2; notify-send 'brightness down'"
 
 #### STYLE
 default_border pixel 3
@@ -192,3 +169,5 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

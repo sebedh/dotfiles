@@ -1,6 +1,6 @@
 [user]
-	signingKey = B6EF1EF130FBFD24B927CB1DA3E201A737F1337C
-	email = sebbe@sebb.io
+	signingKey = F764ABEC0AE6C2B17E0A4D3AD9A43D7D800A69B9
+	email = sebastian@anzr.co
 	name = Sebastian Edholm
 [commit]
 	gpgsign = true
