@@ -8,6 +8,7 @@
 	defaultBranch = main
 [core]
     editor = nvim
+	excludesfile = /home/sebbe/.config/git/gitignore
 [rerere]
 	enabled = true
 [column]
