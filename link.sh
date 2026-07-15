@@ -24,6 +24,7 @@ configs=(
     fish/conf.d
     fish/functions
     fish/config.fish
+    fish/fish_plugins
     fontconfig/fonts.conf
     ghostty/config
     hypr/autostart.conf
