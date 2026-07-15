@@ -14,7 +14,7 @@ defaults() {
 # verbose ln, because 'ln -v' is not portable
 symlink() {
 	printf '%55s -> %s\n' "${1/#$HOME/\~}" "${2/#$HOME/\~}"
-	ln -nsf "$@"
+	ln -nsfT "$@"
 }
 
 symlink "$PWD/git/.gitconfig" ~/.gitconfig
@@ -50,7 +50,7 @@ scripts=(
 )
 
 for c in "${configs[@]}"; do
-    [[ -d ~/.config/$c && -L ~/.config/$c ]] && rm -r ~/.config/"$c"
+    [[ -e ~/.config/$c && ! -L ~/.config/$c ]] && rm -rf ~/.config/"$c"
     mkdir -p ~/.config/${c%/*}
     symlink "$PWD/$c" ~/.config/"$c"
 done
