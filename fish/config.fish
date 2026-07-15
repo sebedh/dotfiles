@@ -2,6 +2,7 @@ set --universal --erase fish_greeting
 set fish_greeting
 
 set -gx EDITOR nvim
+set -gx GPG_TTY (tty)
 
 alias vim="nvim"
 alias rm="rm -iv"
