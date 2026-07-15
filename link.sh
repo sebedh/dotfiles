@@ -21,7 +21,8 @@ symlink "$PWD/git/.gitconfig" ~/.gitconfig
 symlink "$PWD/xdg-terminals.list" ~/.config/xdg-terminals.list
 
 configs=(
-    fish/conf.d/dracula.fish
+    fish/conf.d
+    fish/functions
     fish/config.fish
     fontconfig/fonts.conf
     ghostty/config
