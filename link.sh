@@ -40,6 +40,7 @@ configs=(
     tmux/tmux.conf
     waybar/config.jsonc
     waybar/style.css
+    waybar/mocha.css
     yamlfmt/yamlfmt.yaml
 )
 
