@@ -36,6 +36,7 @@ configs=(
     jj/config.toml
     mako/core.ini
     sway/config
+    kanshi/config
     tmux/tmux.conf
     waybar/config.jsonc
     waybar/style.css
