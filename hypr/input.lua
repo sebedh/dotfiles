@@ -7,7 +7,7 @@ hl.config({
     repeat_delay = 300,
 
     numlock_by_default = true,
-    sensitivity = 0,
+    sensitivity = -1,
 
     touchpad = {
       scroll_factor = 0.4,
