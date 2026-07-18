@@ -1,6 +1,11 @@
 set --universal --erase fish_greeting
 set fish_greeting
 
+set -p fish_function_path ~/.config/fish/vendor/functions
+for f in ~/.config/fish/vendor/conf.d/*.fish
+    source $f
+end
+
 set -gx EDITOR nvim
 set -gx GPG_TTY (tty)
 
