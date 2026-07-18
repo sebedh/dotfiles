@@ -28,22 +28,31 @@ configs=(
     ghostty/config
     gtk-3.0/settings.ini
     gtk-4.0/settings.ini
-    hypr/autostart.conf
-    hypr/bindings.conf
-    hypr/hyprland.conf
-    hypr/input.conf
-    hypr/looknfeel.conf
-    hypr/monitors.conf
     jj/config.toml
     mako/core.ini
     sway/config
     kanshi/config
     tmux/tmux.conf
     waybar/config.jsonc
+    waybar/config-hyprland.jsonc
     waybar/style.css
     waybar/mocha.css
     yamlfmt/yamlfmt.yaml
 )
+
+if [[ "$(hostname)" == *-gpu-hypr ]]; then
+    [[ -e ~/.config/hypr && ! -L ~/.config/hypr ]] && rm -rf ~/.config/hypr
+    symlink "$PWD/hypr-vm" ~/.config/hypr
+else
+    configs+=(
+        hypr/autostart.conf
+        hypr/bindings.conf
+        hypr/hyprland.conf
+        hypr/input.conf
+        hypr/looknfeel.conf
+        hypr/monitors.conf
+    )
+fi
 
 scripts=(
     tmux-session-fzf.sh
