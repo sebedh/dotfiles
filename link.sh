@@ -26,6 +26,8 @@ configs=(
     fish/fish_plugins
     fontconfig/fonts.conf
     ghostty/config
+    gtk-3.0/settings.ini
+    gtk-4.0/settings.ini
     hypr/autostart.conf
     hypr/bindings.conf
     hypr/hyprland.conf

@@ -25,6 +25,7 @@ output HDMI-A-1 subpixel none
 exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec_always --no-startup-id kanshi
+exec gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 exec mako
 
