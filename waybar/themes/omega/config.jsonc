@@ -82,7 +82,6 @@
       "power-profiles-daemon",
       "custom/sep",
       "network",
-      "bluetooth",
       "battery"
     ]
   },
@@ -147,15 +146,6 @@
     "spacing": 1,
     "on-click": "omarchy-launch-wifi",
     "tooltip": false
-  },
-
-  "bluetooth": {
-    "format": "󰂯",
-    "format-disabled": "󰂲",
-    "format-connected": "",
-    "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "omarchy-launch-bluetooth"
   },
 
   "battery": {

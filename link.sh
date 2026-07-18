@@ -74,7 +74,14 @@ for s in "${scripts[@]}"; do
 done
 
 if command -v Hyprland >/dev/null; then
-    symlink "$PWD/waybar/config-hyprland.jsonc" ~/.config/waybar/config.jsonc
+    symlink "$PWD/waybar/themes/omega/config.jsonc" ~/.config/waybar/config.jsonc
+    symlink "$PWD/waybar/themes/omega/style.css" ~/.config/waybar/style.css
+    for f in cava.sh metastats.sh secbar.sh sysbar.sh theme.sh window.sh; do
+        symlink "$PWD/waybar/themes/omega/$f" ~/.config/waybar/"$f"
+    done
+    mkdir -p ~/.config/waybar/bottom
+    symlink "$PWD/waybar/themes/omega/bottom/config" ~/.config/waybar/bottom/config
+    symlink "$PWD/waybar/themes/omega/bottom/style.css" ~/.config/waybar/bottom/style.css
 else
     symlink "$PWD/waybar/config-sway.jsonc" ~/.config/waybar/config.jsonc
 fi
