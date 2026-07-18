@@ -1,9 +1,5 @@
-output "Virtual-1" {
-    mode 1792x1344@60.000
-    alias $KVM_1
-}
 output "Samsung Electric Company Odyssey G95SC H1AK500000" {
-    mode 5120x1440@239.999
+    mode 5120x1440@120
     alias $HOME_1
 }
 
@@ -26,8 +22,8 @@ output "LG Electronics LG TV SSCR2 0x01010101 (HDMI-A-1)" {
     alias $LGTV
 }
 
-profile kvm {
-    output $KVM_1
+profile passthrough {
+    output $HOME_1 mode 2560x1440@119.998 enable
 }
 
 profile mirror_lg {
