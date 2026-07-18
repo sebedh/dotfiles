@@ -1,5 +1,5 @@
-font-size   = 9
-font-family = "Bitstream Vera Sans Mono"
+font-size   = 10
+font-family = "Hack Nerd Font Mono"
 theme = Catppuccin Mocha
 background-opacity = 0.90
 
