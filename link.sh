@@ -33,8 +33,8 @@ configs=(
     sway/config
     kanshi/config
     tmux/tmux.conf
-    waybar/config.jsonc
     waybar/config-hyprland.jsonc
+    waybar/config-sway.jsonc
     waybar/style.css
     waybar/mocha.css
     yamlfmt/yamlfmt.yaml
@@ -72,3 +72,9 @@ for s in "${scripts[@]}"; do
     mkdir -p ~/.local/bin
     symlink "$PWD/scripts/$s" ~/.local/bin/"$s"
 done
+
+if command -v Hyprland >/dev/null; then
+    symlink "$PWD/waybar/config-hyprland.jsonc" ~/.config/waybar/config.jsonc
+else
+    symlink "$PWD/waybar/config-sway.jsonc" ~/.config/waybar/config.jsonc
+fi

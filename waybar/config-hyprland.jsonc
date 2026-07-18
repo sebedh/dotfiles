@@ -11,7 +11,7 @@
         "hyprland/language",
         "pulseaudio",
         "network",
-        "power-profile-daemon",
+        "power-profiles-daemon",
         "memory",
         "backlight",
         "battery",
