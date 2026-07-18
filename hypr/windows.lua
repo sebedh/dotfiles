@@ -1,0 +1,7 @@
+o.window("Zen Browser", { workspace = "1" })
+o.window("Chromium", { workspace = "1" })
+o.window("Microsoft Teams", { workspace = "7" })
+o.window("Signal", { workspace = "7" })
+o.window("Slack", { workspace = "7" })
+o.window("Outlook", { workspace = "8" })
+o.window("org.remmina.Remmina", { workspace = "5" })

@@ -38,28 +38,28 @@ configs=(
     waybar/style.css
     waybar/mocha.css
     yamlfmt/yamlfmt.yaml
+    environment.d/fcitx.conf
 )
 
-if [[ "$(hostname)" == *-gpu-hypr ]]; then
-    [[ -e ~/.config/hypr && ! -L ~/.config/hypr ]] && rm -rf ~/.config/hypr
-    symlink "$PWD/hypr-vm" ~/.config/hypr
-else
-    configs+=(
-        hypr/autostart.conf
-        hypr/bindings.conf
-        hypr/hyprland.conf
-        hypr/input.conf
-        hypr/looknfeel.conf
-        hypr/monitors.conf
-    )
-fi
+dirs=(
+    hypr:.config/hypr
+    elephant:.config/elephant
+    walker:.config/walker
+    uwsm:.config/uwsm
+    omarchy:.local/share/omarchy
+)
+
+for d in "${dirs[@]}"; do
+    src="${d%%:*}"
+    dest="${d#*:}"
+    [[ -e ~/$dest && ! -L ~/$dest ]] && rm -rf ~/"$dest"
+    mkdir -p "$(dirname ~/"$dest")"
+    symlink "$PWD/$src" ~/"$dest"
+done
 
 scripts=(
     tmux-session-fzf.sh
     tmux-sessionizer.sh
-    launch-browser.sh
-    launch-walker.sh
-    cmd-terminal-cwd.sh
 )
 
 for c in "${configs[@]}"; do
