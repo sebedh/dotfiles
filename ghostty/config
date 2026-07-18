@@ -10,3 +10,5 @@ shell-integration-features = sudo
 quit-after-last-window-closed = false
 
 cursor-opacity = 0.5
+
+freetype-load-flags = light
