@@ -18,6 +18,8 @@ input * {
     repeat_rate 50
 }
 
+output HDMI-A-1 subpixel none
+
 # #---Starting External Scripts---# #
 # Export environment variables for UWSM (needed since we skip session.sh)
 exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
