@@ -28,3 +28,6 @@ abbr -a k kubectl
 if type -q direnv
     direnv hook fish | source
 end
+
+# opencode
+fish_add_path /var/home/sebbe/.opencode/bin

@@ -8,8 +8,10 @@ o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cw
 o.bind("SUPER + SHIFT + N", "Editor", { omarchy = "editor" })
 o.bind("SUPER + SHIFT + SLASH", "Passwords", { launch = "1password" })
 
+hl.unbind("SUPER + H")
 hl.unbind("SUPER + J")
 hl.unbind("SUPER + L")
+hl.unbind("SUPER + K")
 hl.unbind("SUPER + LEFT")
 hl.unbind("SUPER + RIGHT")
 hl.unbind("SUPER + UP")
