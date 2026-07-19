@@ -1,53 +1,57 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Catppuccin Latte",
-  "vim": {
-    "use_smartcase_find": true,
-    "toggle_relative_line_numbers": true
+  "cli_default_open_behavior": "existing_window",
+  "agent": {
+    "default_model": {
+      "model": "gpt-5",
+      "provider": "openai"
+    },
+    "dock": "left",
+    "flexible": true,
+    "model_parameters": []
   },
   "agent_servers": {
     "codex-acp": {
       "type": "registry"
     }
   },
-  "edit_predictions": {
-    "provider": "none",
-  },
-  "project_panel": {
-    "dock": "right",
-  },
-  "outline_panel": {
-    "dock": "right",
-  },
+  "base_keymap": "Emacs",
+  "buffer_font_size": 12,
   "collaboration_panel": {
-    "dock": "right",
+    "dock": "right"
+  },
+  "context_servers": {
+    "lean-ctx": {
+      "args": [],
+      "command": "/var/home/sebbe/.local/bin/lean-ctx",
+      "env": {}
+    }
+  },
+  "edit_predictions": {
+    "provider": "none"
   },
   "git_panel": {
-    "dock": "right",
+    "dock": "right"
   },
-  "agent": {
-    "flexible": true,
-    "dock": "left",
-    "default_model": {
-      "provider": "openai",
-      "model": "gpt-5",
-    },
-    "model_parameters": [],
-  },
-  "base_keymap": "Emacs",
-  "ui_font_size": 14,
-  "buffer_font_size": 12,
-  "theme": {
+  "icon_theme": {
     "mode": "dark",
-    "light": "Gruvbox Light",
-    "dark": "Dracula",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Latte"
   },
-  "vim_mode": true,
+  "outline_panel": {
+    "dock": "right"
+  },
+  "project_panel": {
+    "dock": "right"
+  },
+  "theme": {
+    "dark": "Catppuccin Espresso (Blur) [Light]",
+    "light": "Gruvbox Light",
+    "mode": "dark"
+  },
+  "ui_font_size": 14,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "use_smartcase_find": true
+  },
+  "vim_mode": true
 }

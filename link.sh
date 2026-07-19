@@ -39,6 +39,7 @@ configs=(
     waybar/mocha.css
     yamlfmt/yamlfmt.yaml
     environment.d/fcitx.conf
+    user-dirs.dirs
     zed/keymap.json
     zed/settings.json
     zed/tasks.json

@@ -31,3 +31,8 @@ end
 
 # opencode
 fish_add_path /var/home/sebbe/.opencode/bin
+# lean-ctx shell hook — begin
+if test -f "/var/home/sebbe/.config/lean-ctx/shell-hook.fish"
+source "/var/home/sebbe/.config/lean-ctx/shell-hook.fish"
+end
+# lean-ctx shell hook — end
